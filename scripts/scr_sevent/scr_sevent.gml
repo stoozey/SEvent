@@ -1,3 +1,5 @@
+////	SEvent ~ @stoozey_
+
 global.__sevents = { };
 
 function SEventConnection(_eventName, _onEvent, _fireOnce = false, _autoConnect = true) constructor
