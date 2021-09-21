@@ -31,12 +31,7 @@ function SEventConnection(_eventName, _onEvent, _fireOnce = false, _autoConnect 
 	onEventFunc = method(other, _onEvent);
 	
 	OnEventFired = ((_fireOnce) ?
-		function()
-		{
-			onEventFunc();
-			
-			disconnect();
-		} : onEventFunc
+		function() { onEventFunc();	disconnect(); } : onEventFunc
 	);
 	
 	if (_autoConnect)
@@ -82,8 +77,6 @@ function _sevent_listen(_eventName, _onEvent)
 {
 	var _sevent = _sevent_get(_eventName);
 	ds_list_add(_sevent, _onEvent);
-	
-	return true;
 }
 
 #endregion
