@@ -23,12 +23,10 @@ function SEventConnection(_eventName, _onEvent, _fireOnce = false, _autoConnect 
 		return true;
 	}
 	
-	owner = other;
 	connected = false;
 	
 	eventName = _eventName;
 	onEventFunc = method(other, _onEvent);
-	fireOnce = _fireOnce;
 	
 	OnEventFired = ((_fireOnce) ?
 		function()
@@ -52,21 +50,30 @@ function sevent_fire(_eventName)
 
 #region core
 
-function _sevent_get(_eventName)
+function _sevent_get(_eventName, _createIfNotExists = true)
 {
 	var _sevent = global.__sevents[$ _eventName];
-	if (_sevent == undefined)
-	{
-		_sevent = ds_list_create();
-		global.__sevents[$ _eventName] = _sevent;
-	}
+	if ((_createIfNotExists) && (_sevent == undefined))
+		_sevent = _sevent_create(_eventName);
 	
+	return _sevent;
+}
+
+function _sevent_create(_eventName)
+{
+	var _sevent = ds_list_create();
+	global.__sevents[$ _eventName] = _sevent;
+		
 	return _sevent;
 }
 
 function _sevent_destroy(_eventName)
 {
-	var _sevent = _sevent_get(_eventName);
+	 var _sevent = _sevent_get(_eventName, false);
+	 if (_sevent == undefined) return;
+	 
+	 ds_list_destroy(_sevent);
+	 global.__sevents[$ _eventName] = undefined;
 }
 
 function _sevent_listen(_eventName, _onEvent)
