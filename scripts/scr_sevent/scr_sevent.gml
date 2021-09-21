@@ -1,7 +1,9 @@
-////	SEvent ~ @stoozey_
+////      SEvent ~ @stoozey_      \\\\
 
-global.__sevents = { };
-
+///@arg {string} eventName
+///@arg {function} OnEventFired
+///@arg {bool} [fireOnce
+///@arg {bool} autoConnect]
 function SEventConnection(_eventName, _onEvent, _fireOnce = false, _autoConnect = true) constructor
 {
 	static connect = function()
@@ -38,6 +40,16 @@ function SEventConnection(_eventName, _onEvent, _fireOnce = false, _autoConnect 
 		connect();
 }	
 
+///@arg {string} eventName
+///@arg {function} OnEventFired
+///@arg {bool} [fireOnce
+///@arg {bool} autoConnect]
+function sevent_connect(_eventName, _onEvent, _fireOnce = false, _autoConnect = true)
+{
+	return new SEventConnection(_eventName, _onEvent, _fireOnce, _autoConnect);
+}
+
+///@arg {string} eventName
 function sevent_fire(_eventName)
 {
 	var _sevent = _sevent_get(_eventName);
@@ -45,7 +57,9 @@ function sevent_fire(_eventName)
 		_sevent[| i]();
 }
 
-#region core
+#region do not look at me dont do it do not look in here dont look at me stop looking at me do not look at me stop dont look at me
+
+global.__sevents = { };
 
 function _sevent_get(_eventName, _createIfNotExists = true)
 {
