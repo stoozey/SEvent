@@ -1,5 +1,7 @@
 ////      SEvent ~ @stoozey_      \\\\
 
+#macro _SEVENT_CATEGORY_DEFAULT "global"	// The default category for events when one is not supplied
+
 ///@arg {string}    eventName
 ///@arg {function}  OnEventFired
 ///@arg {string}    [categoryName
@@ -20,8 +22,6 @@ function sevent_fire(_eventName, _categoryName = _SEVENT_CATEGORY_DEFAULT)
 }
 
 #region do not look at me dont do it do not look in here dont look at me stop looking at me do not look at me stop dont look at me
-
-#macro _SEVENT_CATEGORY_DEFAULT "global"
 
 global.__sevent_categories = { };
 
@@ -66,7 +66,7 @@ function SEventConnection(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY
 	onEventFunc = method(other, _onEvent);
 	
 	OnEventFired = ((_fireOnce) ?
-		function() { onEventFunc();	disconnect(); } : onEventFunc
+		function() { onEventFunc();	disconnect(); return true; } : onEventFunc
 	);
 	
 	if (_autoConnect)
@@ -85,7 +85,7 @@ function SEventCategory(_name, _enabled = true) constructor
 		if (_sevent == undefined) return;
 		
 		for (var i = 0; i < ds_list_size(_sevent); i++)
-			_sevent[| i]();
+			i -= (_sevent[| i]() != undefined);
 	}
 	
 	///@desc Creates a new SEvent and adds it to the sevents struct

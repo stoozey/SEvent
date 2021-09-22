@@ -1,3 +1,9 @@
+if (keyboard_check_pressed(vk_space))
+{
+	jump();
+	sevent_fire("player_jumped");
+}
+
 var _xAxis = ((keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)));
 var _yAxis = ((keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up)));
 
