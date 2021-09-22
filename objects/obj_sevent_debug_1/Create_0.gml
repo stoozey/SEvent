@@ -12,7 +12,7 @@ move = function(_xTo, _yTo)
 }
 
 moveConnections = [
-	new SEventConnection("move_left", function() { move(-moveAmount, 0) }),
+	new SEventConnection("move_left", function() { move(-moveAmount, 0); }),
 	new SEventConnection("move_right", function() { move(moveAmount, 0); }),
 	new SEventConnection("move_up", function() { move(0, -moveAmount); }),
 	new SEventConnection("move_down", function() { move(0, moveAmount); }),

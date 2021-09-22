@@ -4,6 +4,7 @@
     {"id":{"name":"obj_sevent_debug_2","path":"objects/obj_sevent_debug_2/obj_sevent_debug_2.yy",},"order":2,},
     {"id":{"name":"scr_sevent","path":"scripts/scr_sevent/scr_sevent.yy",},"order":2,},
     {"id":{"name":"rm_sevent_debug","path":"rooms/rm_sevent_debug/rm_sevent_debug.yy",},"order":1,},
+    {"id":{"name":"scr_sevent_debug","path":"scripts/scr_sevent_debug/scr_sevent_debug.yy",},"order":3,},
   ],
   "Options": [
     {"name":"Amazon Fire","path":"options/amazonfire/options_amazonfire.yy",},
