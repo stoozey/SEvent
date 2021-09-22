@@ -1,6 +1,29 @@
 ////      SEvent ~ @stoozey_      \\\\
 
+///@arg {string}    eventName
+///@arg {function}  OnEventFired
+///@arg {string}    [categoryName
+///@arg {bool}      fireOnce
+///@arg {bool}      autoConnect]
+///@returns         SEventConnection
+function sevent_connect(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY_DEFAULT, _fireOnce = false, _autoConnect = true)
+{
+	return new SEventConnection(_eventName, _onEvent, _categoryName, _fireOnce, _autoConnect);
+}
+
+///@arg {string}    eventName
+///@arg {string}    [categoryName]
+function sevent_fire(_eventName, _categoryName = _SEVENT_CATEGORY_DEFAULT)
+{
+	var _category = _sevent_get_category(_categoryName);
+	_category.fire(_eventName);
+}
+
+#region do not look at me dont do it do not look in here dont look at me stop looking at me do not look at me stop dont look at me
+
 #macro _SEVENT_CATEGORY_DEFAULT "global"
+
+global.__sevent_categories = { };
 
 ///@arg {string}    eventName
 ///@arg {function}  OnEventFired
@@ -9,7 +32,7 @@
 ///@arg {bool}      autoConnect]
 function SEventConnection(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY_DEFAULT, _fireOnce = false, _autoConnect = true) constructor
 {
-    ///@desc    Connect to the event category
+    ///@desc Connect to the event category
 	static connect = function()
 	{
 		if (connected) return false;
@@ -21,7 +44,7 @@ function SEventConnection(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY
 		return true;
 	}
 	
-	///@desc    Disconnect from the event category
+	///@desc Disconnect from the event category
 	static disconnect = function()
 	{
 		if (!connected) return false;
@@ -48,30 +71,7 @@ function SEventConnection(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY
 	
 	if (_autoConnect)
 		connect();
-}	
-
-///@arg {string}    eventName
-///@arg {function}  OnEventFired
-///@arg {string}    [categoryName
-///@arg {bool}      fireOnce
-///@arg {bool}      autoConnect]
-///@returns         SEventConnection
-function sevent_connect(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY_DEFAULT, _fireOnce = false, _autoConnect = true)
-{
-	return new SEventConnection(_eventName, _onEvent, _categoryName, _fireOnce, _autoConnect);
 }
-
-///@arg {string}    eventName
-///@arg {string}    [categoryName]
-function sevent_fire(_eventName, _categoryName = _SEVENT_CATEGORY_DEFAULT)
-{
-	var _category = _sevent_get_category(_categoryName);
-	_category.fire(_eventName);
-}
-
-#region do not look at me dont do it do not look in here dont look at me stop looking at me do not look at me stop dont look at me
-
-global.__sevent_categories = { };
 
 function SEventCategory(_name, _enabled = true) constructor
 {
