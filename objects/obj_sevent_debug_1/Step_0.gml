@@ -7,16 +7,17 @@ if (keyboard_check_pressed(vk_space))
 var _xAxis = ((keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left)));
 var _yAxis = ((keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up)));
 
+var _amount = irandom(80);
 switch (_xAxis)
 {
-	case 1: sevent_fire("move_right"); break;
-	case -1: sevent_fire("move_left"); break;
+	case 1: sevent_fire("move_right", _amount); break;
+	case -1: sevent_fire("move_left", _amount); break;
 }
 
 switch (_yAxis)
 {
-	case 1: sevent_fire("move_down"); break;
-	case -1: sevent_fire("move_up"); break;
+	case 1: sevent_fire("move_down", _amount); break;
+	case -1: sevent_fire("move_up", _amount); break;
 }
 
 if (xTo != 0)

@@ -1,5 +1,5 @@
 moveAmount = 32;
-
+randomise();
 xTo = 0;
 yTo = 0;
 jump = function() { };
@@ -16,6 +16,7 @@ sevent_connect("player_jumped", Test4);
 
 move = function(_xTo, _yTo)
 {
+	show_debug_message(string(_xTo) + ", " + string(_yTo));
 	xTo += _xTo;
 	yTo += _yTo;
 	
@@ -23,10 +24,10 @@ move = function(_xTo, _yTo)
 }
 
 moveConnections = [
-	new SEventConnection("move_left", function() { move(-moveAmount, 0); }),
-	new SEventConnection("move_right", function() { move(moveAmount, 0); }),
-	new SEventConnection("move_up", function() { move(0, -moveAmount); }),
-	new SEventConnection("move_down", function() { move(0, moveAmount); }),
+	new SEventConnection("move_left", function(_amount) { move(-_amount, 0); }),
+	new SEventConnection("move_right", function(_amount) { move(_amount, 0); }),
+	new SEventConnection("move_up", function(_amount) { move(0, -_amount); }),
+	new SEventConnection("move_down", function(_amount) { move(0, _amount); }),
 ];
 
 disconnect = function()

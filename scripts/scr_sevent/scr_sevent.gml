@@ -1,24 +1,26 @@
 ////      SEvent ~ @stoozey_      \\\\
 
 #macro _SEVENT_CATEGORY_DEFAULT "global"	// The default category for events when one is not supplied
+#macro _SEVENT_ARGUMENT_DEFAULT -1
 
-///@arg {string}    eventName
+///@arg {any}		eventName
 ///@arg {function}  OnEventFired
-///@arg {string}    [categoryName
+///@arg {any}   	[categoryName
 ///@arg {bool}      fireOnce
 ///@arg {bool}      autoConnect]
 ///@returns         SEventConnection
 function sevent_connect(_eventName, _onEvent, _categoryName = _SEVENT_CATEGORY_DEFAULT, _fireOnce = false, _autoConnect = true)
 {
-	return new SEventConnection(_eventName, _onEvent, _categoryName, _fireOnce, _autoConnect);
+	return new SEventConnection(string(_eventName), _onEvent, string(_categoryName), _fireOnce, _autoConnect);
 }
 
 ///@arg {string}    eventName
-///@arg {string}    [categoryName]
-function sevent_fire(_eventName, _categoryName = _SEVENT_CATEGORY_DEFAULT)
+///@arg {any}   	[argument
+///@arg {string}    categoryName]
+function sevent_fire(_eventName, _argument = _SEVENT_ARGUMENT_DEFAULT, _categoryName = _SEVENT_CATEGORY_DEFAULT)
 {
 	var _category = _sevent_get_category(_categoryName);
-	_category.fire(_eventName);
+	_category.fire(_eventName, _argument);
 }
 
 #region do not look at me dont do it do not look in here dont look at me stop looking at me do not look at me stop dont look at me
@@ -77,7 +79,7 @@ function SEventCategory(_name, _enabled = true) constructor
 {
 	///@desc Fires all connected events
 	///@arg {string}   eventName
-	static fire = function(_eventName)
+	static fire = function(_eventName, _argument = _SEVENT_ARGUMENT_DEFAULT)
 	{
 		if (!enabled) return;
 		
@@ -85,7 +87,7 @@ function SEventCategory(_name, _enabled = true) constructor
 		if (_sevent == undefined) return;
 		
 		for (var i = 0; i < ds_list_size(_sevent); i++)
-			i -= (_sevent[| i]() != undefined);
+			i -= (_sevent[| i](_argument) != undefined);
 	}
 	
 	///@desc Creates a new SEvent and adds it to the sevents struct
