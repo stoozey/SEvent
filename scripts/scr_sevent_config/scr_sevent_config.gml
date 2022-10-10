@@ -1,0 +1,2 @@
+#macro SEVENT_CREATE_GLOBAL_IF_DOESNT_EXIST true		// If you try to access a global event and it doesn't exist, this will create it so you don't have to
+#macro SEVENT_OVERWRITE_GLOBAL_IF_ALREADY_EXISTS false	// If you try to create a global event when one already exists with the same name, this will overwrite it

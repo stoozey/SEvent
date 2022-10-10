@@ -1,9 +1,3 @@
-enum SEVENT_CONNECTION_FLAGS
-{
-	NONE = 0x00,
-	FIRE_ONCE = 0x01,
-}
-
 function __sevent_class_connection(_onFire, _flags = SEVENT_CONNECTION_FLAGS.NONE) constructor
 {
 	///@desc Runs __onFire, also manages any flags that have been set

@@ -3,11 +3,15 @@
   "resourceVersion": "1.6",
   "name": "SEvent",
   "resources": [
-    {"id":{"name":"scr_sevent_event","path":"scripts/scr_sevent_event/scr_sevent_event.yy",},"order":0,},
+    {"id":{"name":"scr_sevent_event","path":"scripts/scr_sevent_event/scr_sevent_event.yy",},"order":2,},
     {"id":{"name":"obj_sevent_debug","path":"objects/obj_sevent_debug/obj_sevent_debug.yy",},"order":1,},
     {"id":{"name":"rm_sevent_debug","path":"rooms/rm_sevent_debug/rm_sevent_debug.yy",},"order":0,},
-    {"id":{"name":"scr_event_connection","path":"scripts/scr_event_connection/scr_event_connection.yy",},"order":1,},
-    {"id":{"name":"__scr_sevent_init","path":"scripts/__scr_sevent_init/__scr_sevent_init.yy",},"order":0,},
+    {"id":{"name":"scr_event_connection","path":"scripts/scr_event_connection/scr_event_connection.yy",},"order":3,},
+    {"id":{"name":"__scr_sevent_init","path":"scripts/__scr_sevent_init/__scr_sevent_init.yy",},"order":1,},
+    {"id":{"name":"__scr_sevent_macros","path":"scripts/__scr_sevent_macros/__scr_sevent_macros.yy",},"order":0,},
+    {"id":{"name":"scr_sevent_globals","path":"scripts/scr_sevent_globals/scr_sevent_globals.yy",},"order":1,},
+    {"id":{"name":"scr_sevent_config","path":"scripts/scr_sevent_config/scr_sevent_config.yy",},"order":0,},
+    {"id":{"name":"__scr_sevent_util","path":"scripts/__scr_sevent_util/__scr_sevent_util.yy",},"order":2,},
   ],
   "Options": [
     {"name":"Android","path":"options/android/options_android.yy",},
@@ -32,7 +36,7 @@
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Debug","folderPath":"folders/Debug.yy","order":15,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"SEvent","folderPath":"folders/SEvent.yy","order":16,},
-    {"folderPath":"folders/SEvent/Internal.yy","order":2,"resourceVersion":"1.0","name":"Internal","tags":[],"resourceType":"GMFolder",},
+    {"folderPath":"folders/SEvent/Internal.yy","order":4,"resourceVersion":"1.0","name":"Internal","tags":[],"resourceType":"GMFolder",},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

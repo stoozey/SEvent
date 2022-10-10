@@ -1,1 +1,3 @@
-instance_create_depth(0, 0, 0, __obj_sevent);
+global.__sevent_events = { };
+
+show_debug_message("SEvent v" + SEVENT_VERSION + " - https://github.com/stoozey/SEvent - by @stoozey_");
