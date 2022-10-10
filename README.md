@@ -75,7 +75,7 @@ Stops the connection from being called when the event fires.
 Allows the function to be called again when the event fires.
 
 #### connection.destroy()
-Queues the connection to be disconnected and destroyed.
+Disconnects the connection and queues it to be destroyed.
 Make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
 
 ---
