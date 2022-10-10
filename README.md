@@ -1,6 +1,6 @@
 
 # SEvent
-An lightweight and easy to use event system for Gamemaker Studio 2.3+
+An lightweight and easy to use event system for GameMaker
 
 GML often encourages coding styles where objects and scripts all reference eachother directly which creates a ton of problems that over time can become _impossible_ to fix.
 Events are great for abstracting code from eachother and keeping everything tidy. (It's also pretty useful for networking!)
