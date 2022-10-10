@@ -1,36 +1,85 @@
+
 # SEvent
-An easy to use event system for Gamemaker Studio 2.3+
+An lightweight and easy to use event system for Gamemaker Studio 2.3+
 
 GML often encourages coding styles where objects and scripts all reference eachother directly which creates a ton of problems that over time can become _impossible_ to fix.
 Events are great for abstracting code from eachother and keeping everything tidy. (It's also pretty useful for networking!)
 
+---
 
-## Basic Example
 All you need to do in order to use the system is connect a function to an event and then fire it, everything else is handled automatically.
-#### Connecting to an event:
-	(some random instance)
-	OnPlayerJumped = function() { jumpCounter++; };
-	sevent_connect("player_jumped", OnPlayerJumped);
 
-#### Firing an event:
-	(player instance)
-	if (keyboard_check_pressed(vk_space))
-	{
-		jump();
-		sevent_fire("player_jumped");
-	}
-## Event Categories Example
-For extra organization, you can have separate categories for your events. Using the previous example, we could instead use an extra argument like so:
-#### Connecting to an event:
-	(some random instance)
-	sevent_connect("jumped", OnPlayerJumped, "player");
+The system works by attaching "connections" that contain a function to event objects. These connections can then be manipulated with via  `reconnect()`, `disconnect()`, `destroy()`, etc. 
 
-#### Firing an event:
-	(player instance)
-	sevent_fire("jumped", "player"); // Fires the connected event
-	sevent_fire("jumped", "enemy"); // Nothing will happen! Incredible!
-Now we can have lots of "jumped" events tied to different instances that use completely separate categories.
-## Disconnecting Events
-What if I don't want the event to run anymore? Two options.
- 1. `sevent_connect()` has an optional argument `fireOnce`, the event will disconnect itself upon being called.
- 3. `sevent_connect()` returns an `SEventConnection` which has a function named `disconnect()` that you can call. Changed your mind, want it connected again? `connect()`.
+Multiple connections can be connected to a single event.
+
+## Usage Examples
+[The project includes a demo which you can look at for a better understanding of SEvent in action.](https://github.com/stoozey/SEvent/tree/main/objects/obj_sevent_demo)
+
+### Arguments
+The first argument given to a connected function is the connection itself (as these functions are called from the context where they were created, not from the connection itself). You can also pass a second, optional, argument--if you want multiple arguments, simply make it an array.
+
+### Global Events
+Global events are the most convenient way of using SEvent. Global events are represented by strings.
+#####  Initialization
+```
+clickedCount = 0;
+
+// Create the event (this can be automated in scr_sevent_config)
+sevent_global_create("mb_left_pressed");
+
+// Create a connection to the event
+sevent_global_connect("mb_left_pressed", function(_connection) {
+	show_debug_message("mb_left was pressed " + string(clickedCount) + " times!");
+	clickedCount++;
+});
+```
+##### Firing
+```
+// Fire the event
+if (mouse_check_button_pressed(mb_left))
+	sevent_global_fire("mb_left_pressed");
+```
+---
+### Local Events
+If you want to store events in your own way separate from globals, you can.
+##### Initialization
+```
+event = new Event();
+counter = 0;
+
+event.connect(function(_connection, _increment) {
+	counter += _increment;
+	show_debug_message("new counter value is " + string(counter));
+});
+```
+##### Firing
+```
+if (mouse_check_button_pressed(mb_left))
+{
+	var _increment = irandom(69);
+	event.fire(_increment);
+}
+```
+
+##### Disconnecting/Destroying connections
+Whenever you connect to an event, it returns the Connection object which can be manipulated.
+```
+var _connection = event.connect(<some_function>);
+
+/*
+	stops the connection from being called when the event fires.
+*/
+_connection.disconnect(); 
+
+/*
+	allows the function to be called again when the event fires.
+*/
+_connection.reconnect(); 
+
+/*
+	queues the connection to be disconnected and destroyed.
+	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
+*/
+_connection.destroy(); 
+```
