@@ -52,7 +52,7 @@ function sevent_global_get(_name, _processFlag = true)
 function sevent_global_connect(_name, _onFire, _flags = (SEVENT_CONNECTION_FLAGS.NONE))
 {
 	var _event = sevent_global_get(_name);
-	_event.connect(_onFire, _flags);
+	return _event.connect(_onFire, _flags);
 }
 
 ///@desc Fires all connected events, and frees any that have been destroyed

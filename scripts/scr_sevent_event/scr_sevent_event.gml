@@ -8,6 +8,8 @@ function Event() constructor
 		var _context = other;
 		var _connection = new __sevent_class_connection(_onFire, _flags, _context);
 		__connect_connection(_connection);
+		
+		return _connection;
 	}
 	
 	///@desc Fires all connected events, and frees any that have been destroyed
