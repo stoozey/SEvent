@@ -3,11 +3,11 @@ randomize();
 event = new Event();
 
 event.connect(function(_args) {
-	show_debug_message("hiii jojo" + string(_args[0]));
+	show_debug_message("hiii " + string(_args));
 });
 
 event.connect(function(_args) {
-	show_debug_message("byeeee jojo" + string(_args[0]));
+	show_debug_message("byeeee" + string(_args));
 }, SEVENT_CONNECTION_FLAGS.FIRE_ONCE);
 
 

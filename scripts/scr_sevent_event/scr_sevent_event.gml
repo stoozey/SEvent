@@ -13,8 +13,11 @@ function Event() constructor
 		var _args = array_create(argument_count);
 		var i = 0;
 		repeat (argument_count)
-			_args[i] = argument[i++];
-		
+		{
+			_args[i] = argument[i];
+			i++;
+		}
+
 		var i = 0;
 		repeat (array_length(__connections))
 		{
