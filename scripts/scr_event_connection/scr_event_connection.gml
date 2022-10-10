@@ -1,4 +1,7 @@
-function __sevent_class_connection(_onFire, _flags = SEVENT_CONNECTION_FLAGS.NONE) constructor
+///@param {function} onFire The function to be called upon the event firing
+///@param {SEVENT_CONNECTION_FLAGS} flags Flags used to alter the way the connection is proccesed
+///@param {any} context The context that onFire is called from
+function __sevent_class_connection(_onFire, _flags, _context) constructor
 {
 	///@desc Runs __onFire, also manages any flags that have been set
 	///@param {array} An array of arguments passed into __onFire
@@ -42,7 +45,7 @@ function __sevent_class_connection(_onFire, _flags = SEVENT_CONNECTION_FLAGS.NON
 	
 	__connected = false;
 	__isDestroyed = false;
-	__onFire = _onFire;
+	__onFire = method(_context, _onFire);
 	
 	connect();
 }

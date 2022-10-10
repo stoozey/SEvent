@@ -7,7 +7,8 @@ function Event() constructor
 	///@param {SEVENT_CONNECTION_FLAGS} [flags] Flags used to alter the way the connection is proccesed
 	static connect = function(_onFire, _flags = SEVENT_CONNECTION_FLAGS.NONE)
 	{
-		var _connection = new __sevent_class_connection(_onFire, _flags);
+		var _context = other;
+		var _connection = new __sevent_class_connection(_onFire, _flags, _context);
 		__connect_connection();
 	}
 	
