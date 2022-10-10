@@ -1,6 +1,8 @@
 
 # SEvent
-An lightweight and easy to use event system for Gamemaker Studio 2.3+
+An lightweight and easy to use event system for GameMaker.
+
+You can also find this hosted on my [Itch.io page](https://stoozey.itch.io/sevent).
 
 GML often encourages coding styles where objects and scripts all reference eachother directly which creates a ton of problems that over time can become _impossible_ to fix.
 Events are great for abstracting code from eachother and keeping everything tidy. (It's also pretty useful for networking!)
@@ -9,7 +11,7 @@ Events are great for abstracting code from eachother and keeping everything tidy
 
 All you need to do in order to use the system is connect a function to an event and then fire it, everything else is handled automatically.
 
-The system works by attaching "connections" that contain a function to event objects. These connections can then be manipulated with via  `reconnect()`, `disconnect()`, `destroy()`, etc. 
+The system works by attaching "connections" that contain a function to event objects. These connections can then be manipulated with `reconnect()`, `disconnect()`, `destroy()`, etc. 
 
 Multiple connections can be connected to a single event.
 
@@ -61,31 +63,23 @@ if (mouse_check_button_pressed(mb_left))
 	event.fire(_increment);
 }
 ```
-
-##### Disconnecting/Destroying connections
+---
+### Disconnecting/Destroying Connections
 Whenever you connect to an event, it returns the Connection object which can be manipulated.
 It's important to know the difference between disconnect() and destroy() to avoid memory leaks!
-```
-var _connection = event.connect(<some_function>);
 
-/*
-	stops the connection from being called when the event fires.
-*/
-_connection.disconnect(); 
+#### `connection.disconnect()`
+Stops the connection from being called when the event fires.
 
-/*
-	allows the function to be called again when the event fires.
-*/
-_connection.reconnect(); 
+#### `connection.reconnect()`
+Allows the function to be called again when the event fires.
 
-/*
-	queues the connection to be disconnected and destroyed.
-	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
-*/
-_connection.destroy(); 
-```
+#### `connection.destroy()`
+Disconnects the connection and queues it to be destroyed.
+Make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
+
 ---
-##### Flags
+### Flags
 Flags are optional values that can be added to a connection. Currently, only one exists: `SEVENT_CONNECTION_FLAGS.FIRE_ONCE` which as you can guess, will destroy the connection after it fires.
 ```
 fireOnceEvent.connect(function(_connection, _args) {
