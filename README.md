@@ -1,7 +1,8 @@
 
 # SEvent
-An lightweight and easy to use event system for GameMaker
-You can also find it hosted on my [Itch.io page](https://stoozey.itch.io/sevent).
+An lightweight and easy to use event system for GameMaker.
+
+You can also find this hosted on my [Itch.io page](https://stoozey.itch.io/sevent).
 
 GML often encourages coding styles where objects and scripts all reference eachother directly which creates a ton of problems that over time can become _impossible_ to fix.
 Events are great for abstracting code from eachother and keeping everything tidy. (It's also pretty useful for networking!)
