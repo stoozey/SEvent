@@ -1,4 +1,4 @@
-function __sevent_print(_msg)
+function __sevent_print()
 {
 	var _string = "########## SEvent: ";
     var _i = 0;
