@@ -67,25 +67,17 @@ if (mouse_check_button_pressed(mb_left))
 ##### Disconnecting/Destroying connections
 Whenever you connect to an event, it returns the Connection object which can be manipulated.
 It's important to know the difference between disconnect() and destroy() to avoid memory leaks!
-```
-var _connection = event.connect(<some_function>);
 
-/*
-	stops the connection from being called when the event fires.
-*/
-_connection.disconnect(); 
+##### connection.disconnect()
+Stops the connection from being called when the event fires.
 
-/*
-	allows the function to be called again when the event fires.
-*/
-_connection.reconnect(); 
+##### connection.reconnect()
+Allows the function to be called again when the event fires.
 
-/*
-	queues the connection to be disconnected and destroyed.
-	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
-*/
-_connection.destroy(); 
-```
+##### connection.destroy()
+Queues the connection to be disconnected and destroyed.
+Make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
+
 ---
 ##### Flags
 Flags are optional values that can be added to a connection. Currently, only one exists: `SEVENT_CONNECTION_FLAGS.FIRE_ONCE` which as you can guess, will destroy the connection after it fires.
