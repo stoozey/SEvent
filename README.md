@@ -83,3 +83,11 @@ _connection.reconnect();
 */
 _connection.destroy(); 
 ```
+---
+##### Flags
+Flags are optional values that can be added to a connection. Currently, only one exists: `SEVENT_CONNECTION_FLAGS.FIRE_ONCE` which as you can guess, will destroy the connection after it fires.
+```
+fireOnceEvent.connect(function(_connection, _args) {
+	// blah
+}, SEVENT_CONNECTION_FLAGS.FIRE_ONCE);
+```
