@@ -27,6 +27,7 @@ fireOnceEvent.connect(function(_connection, _args) {
 }, (SEVENT_CONNECTION_FLAGS.FIRE_ONCE));
 
 //// disconnecting/destroying connections
+//   it's important to know the difference between disconnect() and destroy() to avoid memory leaks
 uselessEvent = new Event();
 var _connection = uselessEvent.connect(function() { });
 
@@ -41,7 +42,7 @@ _connection.disconnect();
 _connection.reconnect(); 
 
 /*
-	queues the connection to be disconnected and destroyed.
-	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
+	queues the connection to be disconnected *and* destroyed (cleared from memory).
+	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnected! 
 */
 _connection.destroy(); 
