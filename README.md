@@ -64,6 +64,7 @@ if (mouse_check_button_pressed(mb_left))
 
 ##### Disconnecting/Destroying connections
 Whenever you connect to an event, it returns the Connection object which can be manipulated.
+It's important to know the difference between disconnect() and destroy() to avoid memory leaks!
 ```
 var _connection = event.connect(<some_function>);
 
