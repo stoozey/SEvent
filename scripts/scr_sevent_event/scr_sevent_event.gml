@@ -14,8 +14,6 @@ function Event() constructor
 	///@param {array} [args] An array of arguments to be passed to the connections on fire function
 	static fire = function(_args = undefined)
 	{
-		_args = (_args ?? []);
-		
 		var i = 0;
 		repeat (array_length(__connections))
 		{
