@@ -9,7 +9,7 @@ Events are great for abstracting code from eachother and keeping everything tidy
 
 All you need to do in order to use the system is connect a function to an event and then fire it, everything else is handled automatically.
 
-The system works by attaching "connections" that contain a function to event objects. These connections can then be manipulated with via  `reconnect()`, `disconnect()`, `destroy()`, etc. 
+The system works by attaching "connections" that contain a function to event objects. These connections can then be manipulated with `reconnect()`, `disconnect()`, `destroy()`, etc. 
 
 Multiple connections can be connected to a single event.
 
