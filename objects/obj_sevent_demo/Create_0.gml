@@ -2,7 +2,7 @@
 //   usage of global events instead of local ones
 sevent_global_create("mb_left_pressed");
 
-sevent_global_connect("mb_left_pressed", function() {
+sevent_global_connect("mb_left_pressed", function(_connection) {
 	show_debug_message("mb_left was pressed");
 });
 
@@ -11,7 +11,7 @@ sevent_global_connect("mb_left_pressed", function() {
 counterEvent = new Event();
 counter = 0;
 
-counterEvent.connect(function() {
+counterEvent.connect(function(_connection) {
 	show_debug_message("counterEvent has fired: " + string(++counter) + " times");
 });
 
@@ -21,7 +21,7 @@ alarm[0] = room_speed;
 //   when you press a key, it will print the key then automatically destroy the connection
 fireOnceEvent = new Event();
 
-fireOnceEvent.connect(function(_args) {
+fireOnceEvent.connect(function(_connection, _args) {
 	var _key = _args[0];
 	show_debug_message("pressed key: " + string(_key));
 }, (SEVENT_CONNECTION_FLAGS.FIRE_ONCE));

@@ -9,7 +9,7 @@ function __sevent_class_connection(_onFire, _flags, _context) constructor
 	{
 		if (!__connected) return;
 		
-		__onFire(_args);
+		__onFire(self, _args);
 		
 		if (__flags & SEVENT_CONNECTION_FLAGS.FIRE_ONCE)
 			destroy();
