@@ -16,7 +16,7 @@ function __sevent_class_connection(_onFire, _flags, _context) constructor
 	}
 	
 	///@desc Events will call fire() when fired
-	static connect = function()
+	static reconnect = function()
 	{
 		__connected = true;
 	}
@@ -43,9 +43,7 @@ function __sevent_class_connection(_onFire, _flags, _context) constructor
 	
 	__flags = _flags;
 	
-	__connected = false;
+	__connected = true;
 	__isDestroyed = false;
 	__onFire = method(_context, _onFire);
-	
-	connect();
 }
