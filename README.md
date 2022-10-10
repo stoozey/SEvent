@@ -68,13 +68,13 @@ if (mouse_check_button_pressed(mb_left))
 Whenever you connect to an event, it returns the Connection object which can be manipulated.
 It's important to know the difference between disconnect() and destroy() to avoid memory leaks!
 
-##### connection.disconnect()
+#### connection.disconnect()
 Stops the connection from being called when the event fires.
 
-##### connection.reconnect()
+#### connection.reconnect()
 Allows the function to be called again when the event fires.
 
-##### connection.destroy()
+#### connection.destroy()
 Queues the connection to be disconnected and destroyed.
 Make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
 
