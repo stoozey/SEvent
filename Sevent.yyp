@@ -4,8 +4,8 @@
   "name": "SEvent",
   "resources": [
     {"id":{"name":"scr_sevent_event","path":"scripts/scr_sevent_event/scr_sevent_event.yy",},"order":2,},
-    {"id":{"name":"obj_sevent_debug","path":"objects/obj_sevent_debug/obj_sevent_debug.yy",},"order":1,},
-    {"id":{"name":"rm_sevent_debug","path":"rooms/rm_sevent_debug/rm_sevent_debug.yy",},"order":0,},
+    {"id":{"name":"obj_sevent_demo","path":"objects/obj_sevent_demo/obj_sevent_demo.yy",},"order":1,},
+    {"id":{"name":"rm_sevent_demo","path":"rooms/rm_sevent_demo/rm_sevent_demo.yy",},"order":0,},
     {"id":{"name":"scr_event_connection","path":"scripts/scr_event_connection/scr_event_connection.yy",},"order":3,},
     {"id":{"name":"__scr_sevent_init","path":"scripts/__scr_sevent_init/__scr_sevent_init.yy",},"order":1,},
     {"id":{"name":"__scr_sevent_macros","path":"scripts/__scr_sevent_macros/__scr_sevent_macros.yy",},"order":0,},
@@ -31,12 +31,12 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"rm_sevent_debug","path":"rooms/rm_sevent_debug/rm_sevent_debug.yy",},},
+    {"roomId":{"name":"rm_sevent_demo","path":"rooms/rm_sevent_demo/rm_sevent_demo.yy",},},
   ],
   "Folders": [
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Debug","folderPath":"folders/Debug.yy","order":15,},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Demo","folderPath":"folders/Demo.yy","order":15,},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"SEvent","folderPath":"folders/SEvent.yy","order":16,},
-    {"folderPath":"folders/SEvent/Internal.yy","order":4,"resourceVersion":"1.0","name":"Internal","tags":[],"resourceType":"GMFolder",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Internal","folderPath":"folders/SEvent/Internal.yy","order":4,},
   ],
   "AudioGroups": [
     {"resourceType":"GMAudioGroup","resourceVersion":"1.3","name":"audiogroup_default","targets":-1,},

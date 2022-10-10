@@ -1,21 +1,21 @@
 function Event() constructor
 {
-	static __args_default = [ ];
-	
 	///@desc Generates a Connection and connects it to the event
 	///@param {function} onFire The function to be called upon the event firing
 	///@param {SEVENT_CONNECTION_FLAGS} [flags] Flags used to alter the way the connection is proccesed
-	static connect = function(_onFire, _flags = SEVENT_CONNECTION_FLAGS.NONE)
+	static connect = function(_onFire, _flags = (SEVENT_CONNECTION_FLAGS.NONE))
 	{
 		var _context = other;
 		var _connection = new __sevent_class_connection(_onFire, _flags, _context);
-		__connect_connection();
+		__connect_connection(_connection);
 	}
 	
 	///@desc Fires all connected events, and frees any that have been destroyed
 	///@param {array} [args] An array of arguments to be passed to the connections on fire function
-	static fire = function(_args = __args_default)
+	static fire = function(_args = undefined)
 	{
+		_args = (_args ?? []);
+		
 		var i = 0;
 		repeat (array_length(__connections))
 		{
