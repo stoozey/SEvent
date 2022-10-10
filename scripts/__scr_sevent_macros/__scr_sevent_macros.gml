@@ -1,4 +1,4 @@
-#macro SEVENT_VERSION "2.2.0"
+#macro __SEVENT_VERSION "2.2.0"
 
 enum SEVENT_CONNECTION_FLAGS
 {
