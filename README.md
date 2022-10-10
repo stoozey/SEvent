@@ -79,7 +79,7 @@ Disconnects the connection and queues it to be destroyed.
 Make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
 
 ---
-##### Flags
+### Flags
 Flags are optional values that can be added to a connection. Currently, only one exists: `SEVENT_CONNECTION_FLAGS.FIRE_ONCE` which as you can guess, will destroy the connection after it fires.
 ```
 fireOnceEvent.connect(function(_connection, _args) {
