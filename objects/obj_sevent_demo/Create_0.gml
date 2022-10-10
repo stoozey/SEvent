@@ -25,3 +25,23 @@ fireOnceEvent.connect(function(_connection, _args) {
 	var _key = _args[0];
 	show_debug_message("pressed key: " + string(_key));
 }, (SEVENT_CONNECTION_FLAGS.FIRE_ONCE));
+
+//// disconnecting/destroying connections
+uselessEvent = new Event();
+var _connection = uselessEvent.connect(function() { });
+
+/*
+	stops the connection from being called when the event fires.
+*/
+_connection.disconnect(); 
+
+/*
+	allows the function to be called again when the event fires.
+*/
+_connection.reconnect(); 
+
+/*
+	queues the connection to be disconnected and destroyed.
+	make sure you call this if you want your connection PERMANENTLY removed instead of just disconnect! 
+*/
+_connection.destroy(); 
