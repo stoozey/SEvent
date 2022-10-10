@@ -1,13 +1,16 @@
 function Event() constructor
 {
+	///@desc Generates a Connection and connects it to the event
+	///@param {function} onFire The function to be called upon the event firing
+	///@param {SEVENT_CONNECTION_FLAGS} [flags] Flags used to alter the way the connection is proccesed
 	static connect = function(_onFire, _flags)
 	{
-		__regenerate_connections();
-		
 		var _connection = new __sevent_class_connection(_onFire, _flags);
-		array_push(__connections, _connection);
+		__connect_connection();
 	}
 	
+	///@desc Fires all connected events, and frees any that have been destroyed
+	///@param [...] Optional parameters to be passed to the connection, bundled as an array
 	static fire = function()
 	{
 		var _args = array_create(argument_count);
@@ -28,6 +31,18 @@ function Event() constructor
 		}
 	}
 	
+	///@desc Adds a connection to the connection array
+	///@param connection The connection to add
+	///@ignore
+	static __connect_connection = function(_connection)
+	{
+		__regenerate_connections();
+		array_push(__connections, _connection);
+	}
+	
+	///@desc Returns a connection from the connection array. It will be destroyed if it has been marked for it
+	///@returns {any} Connection or undefined
+	///@ignore
 	static __get_connection = function(_index)
 	{
 		var _connection = __connections[_index];
@@ -37,6 +52,8 @@ function Event() constructor
 		return _connection;
 	}
 	
+	///@desc Regenerates the connection array, clearing itself of any that may have been destroyed
+	///@ignore
 	static __regenerate_connections = function()
 	{
 		var _connections = [];
