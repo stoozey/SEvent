@@ -1,6 +1,6 @@
 
 # SEvent
-An simple and easy to use event system for GameMaker.
+_A simple event system for GameMaker_
 
 You can also find this hosted on my [Itch.io page](https://stoozey.itch.io/sevent).
 
