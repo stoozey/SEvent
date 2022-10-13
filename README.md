@@ -1,8 +1,13 @@
 
-# SEvent
-_A simple event system for GameMaker_
-
-You can also find this hosted on my [Itch.io page](https://stoozey.itch.io/sevent).
+<p align="center">
+<div align="center">
+  <img src="https://i.imgur.com/UgLGNjm.png" alt="SEvent - A simple event system for GameMaker" _target="blank" height=200/>
+  </div>
+  <div align="center">
+   A simple event system for GameMaker
+   <p>Available for download <a href="https://stoozey.itch.io/sevent"> on Itch.io</a>.</p>
+   </div>
+</p>
 
 GML often encourages coding styles where objects and scripts all reference eachother directly which creates a ton of problems that over time can become _impossible_ to fix.
 Events are great for abstracting code from eachother and keeping everything tidy. (It's also pretty useful for networking!)
@@ -86,3 +91,4 @@ fireOnceEvent.connect(function(_connection, _args) {
 	// blah
 }, SEVENT_CONNECTION_FLAGS.FIRE_ONCE);
 ```
+
