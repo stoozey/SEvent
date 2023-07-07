@@ -8,5 +8,5 @@ function __sevent_print()
         ++_i;
     }
     
-    return show_debug_message(_string);
+    show_debug_message(_string);
 }
